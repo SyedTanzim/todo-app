@@ -19,10 +19,8 @@ export class ControllerClass {
     }
 
     removeProject(removeId) {
-        const index = this.dataArray.findIndex(project => project.id === removeId); 
-        if (index > -1) { 
-            this.dataArray.splice(index, 1); 
-        };
+        this.dataArray = this.dataArray.filter(p => p.id !== removeId);
+        dataManager.saveData(this.dataArray);
     }
 
     addTodoToProject(projectId, title, description, date, priority) {
