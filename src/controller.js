@@ -5,7 +5,7 @@ import { dataManager } from "../data.js";
 export class ControllerClass {
 
     constructor() {
-        this.dataArray = [];
+        this.dataArray = dataManager.savedDataChecker();
     }
 
     getData() {
@@ -19,9 +19,9 @@ export class ControllerClass {
     }
 
     removeProject(removeId) {
-        const index = this.dataArray.findIndex(project => project.id === removeId);
-        if (index > -1) {
-            this.dataArray.splice(index, 1);
+        const index = this.dataArray.findIndex(project => project.id === removeId); 
+        if (index > -1) { 
+            this.dataArray.splice(index, 1); 
         };
     }
 
