@@ -1,6 +1,6 @@
 import { ProjectGenerator } from "./project.js";
 import { TodoGenerator } from "./todo.js";
-import { dataManager } from "../data.js";
+import { dataManager } from "./data.js";
 
 export class ControllerClass {
 
@@ -24,10 +24,15 @@ export class ControllerClass {
     }
 
     addTodoToProject(projectId, title, description, date, priority) {
+        this.dataArray = dataManager.savedProjectReconstructor();
+
         const project = this.dataArray.find(p => p.id === projectId);
+
         if (project) {
+            console.log(project);            
             const todo = new TodoGenerator(title, description, date, priority);
             project.addTodo(todo);
-        }
+            dataManager.saveData(this.dataArray);
+        };
     }
-};
+}
