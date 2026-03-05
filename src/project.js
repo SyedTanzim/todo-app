@@ -1,3 +1,5 @@
+import { TodoGenerator } from "./todo.js";
+
 export class ProjectGenerator {
     constructor(title, id = crypto.randomUUID(), todos = []) {
         this.id = id;
@@ -14,9 +16,22 @@ export class ProjectGenerator {
     }
 
     removeTodo(removeId) {
-        const index = this.todos.findIndex( todo => todo.id === removeId );
+        const index = this.todos.findIndex(todo => todo.id === removeId);
         if (index > -1) {
             this.todos.splice(index, 1);
         };
+    }
+
+    todoReconstructor() {
+        const rawData = JSON.parse(localStorage.getItem('projects'));
+
+        const hydratedData = rawData.map(project => {
+            const reconstructedTodo = project.todos.map(todo =>
+                new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
+            );
+            return reconstructedTodo;
+        });
+
+        return hydratedData;
     }
 };

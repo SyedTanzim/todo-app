@@ -16,8 +16,10 @@ class DataManager {
     }
 
     savedProjectReconstructor() {
-        const savedData = JSON.parse(localStorage.getItem('projects'));
-        const reconstructedData = savedData.map(project => new ProjectGenerator(project.title, project.id, project.todos));
+        const rawData = JSON.parse(localStorage.getItem('projects'));
+        const reconstructedData = rawData.map(project => 
+            new ProjectGenerator(project.title, project.id, project.todos)
+        );
         return reconstructedData;
     }
 }

@@ -28,8 +28,7 @@ export class ControllerClass {
 
         const project = this.dataArray.find(p => p.id === projectId);
 
-        if (project) {
-            console.log(project);            
+        if (project) {           
             const todo = new TodoGenerator(title, description, date, priority);
             project.addTodo(todo);
             dataManager.saveData(this.dataArray);
