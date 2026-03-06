@@ -1,3 +1,4 @@
+import { dataManager } from "./data.js";
 import { TodoGenerator } from "./todo.js";
 
 export class ProjectGenerator {
@@ -22,16 +23,18 @@ export class ProjectGenerator {
         };
     }
 
-    todoReconstructor() {
-        const rawData = JSON.parse(localStorage.getItem('projects'));
-
-        const hydratedData = rawData.map(project => {
+    savedDataReconstructor() {
+        const projects = dataManager.savedProjectReconstructor();
+        
+        projects.forEach(project => {
             const reconstructedTodo = project.todos.map(todo =>
                 new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
             );
-            return reconstructedTodo;
+            project.todos = [];
+            reconstructedTodo.map(todo => project.addTodo(todo))
         });
 
-        return hydratedData;
+        return projects;        
     }
 };
+
