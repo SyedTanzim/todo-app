@@ -31,10 +31,9 @@ export class ProjectGenerator {
                 new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
             );
             project.todos = [];
-            reconstructedTodo.map(todo => project.addTodo(todo))
+            reconstructedTodo.forEach(todo => project.addTodo(todo));
         });
 
         return projects;        
     }
 };
-
