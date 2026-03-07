@@ -6,6 +6,10 @@ class DataManager {
         localStorage.setItem('projects', JSON.stringify(data));
     }
 
+    /**
+     * Retreives data from localStorage or returns an empty array if nothing exists. 
+     * Required for safe initialization of application
+     */
     savedDataChecker() {
         const savedData = JSON.parse(localStorage.getItem('projects'));
         if (savedData) {
@@ -15,10 +19,14 @@ class DataManager {
         }
     }
 
+    /**
+     * Rebuilds Project instances from LocalStorage.
+     * Required to restore methods lost during JSON stringification.
+     */
     savedProjectReconstructor() {
         const rawData = JSON.parse(localStorage.getItem('projects'));
 
-        const reconstructedProjects = rawData.map(project => 
+        const reconstructedProjects = rawData.map(project =>
             new ProjectGenerator(project.title, project.id, project.todos)
         )
 
