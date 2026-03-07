@@ -23,6 +23,10 @@ export class ProjectGenerator {
         };
     }
 
+    /**
+     * Reconstruct todo instances from the projects and adds them back.
+     * Required to restore todo methods lost during JSON stringification.
+     */
     savedDataReconstructor() {
         const projects = dataManager.savedProjectReconstructor();
         
