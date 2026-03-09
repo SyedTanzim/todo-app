@@ -1,4 +1,3 @@
-import { dataManager } from "./data.js";
 import { TodoGenerator } from "./todo.js";
 
 export class ProjectGenerator {
@@ -23,21 +22,11 @@ export class ProjectGenerator {
         };
     }
 
-    /**
-     * Reconstruct todo instances from the projects and adds them back.
-     * Required to restore todo methods lost during JSON stringification.
-     */
-    savedDataReconstructor() {
-        const projects = dataManager.savedProjectReconstructor();
-        
-        projects.forEach(project => {
-            const reconstructedTodo = project.todos.map(todo =>
-                new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
-            );
-            project.todos = [];
-            reconstructedTodo.forEach(todo => project.addTodo(todo));
-        });
-
-        return projects;        
+    todoReconstructor() {
+        const reconstructedTodo = this.todos.map(todo =>
+            new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
+        );
+        this.todos = [];
+        reconstructedTodo.forEach(todo => this.addTodo(todo));
     }
 };
