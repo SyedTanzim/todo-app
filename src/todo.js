@@ -7,6 +7,7 @@ export class TodoGenerator {
         this.priority = priority;
     }
 
+    // Set priority of todos
     setPriority(value) {
         this.priority = value;
     }
