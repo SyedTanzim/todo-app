@@ -21,7 +21,7 @@ class DataManager {
 
     /**
      * Rebuilds Project instances from LocalStorage.
-     * Required to restore methods lost during JSON stringification.
+     * Required to restore project methods lost during JSON stringification.
      */
     savedProjectReconstructor() {
         const rawData = JSON.parse(localStorage.getItem('projects'));
@@ -33,6 +33,10 @@ class DataManager {
         return reconstructedProjects;
     }
 
+    /**
+     * Rebuilds todo instances in the projects
+     * Required to restore todo methods lost during JSON stringification.
+     */
     savedDataReconstructor() {
         const projects = this.savedProjectReconstructor();
         projects.map(project => project.todoReconstructor());
