@@ -45,3 +45,5 @@ export class ControllerClass {
         };
     }
 }
+
+export const controller = new ControllerClass;

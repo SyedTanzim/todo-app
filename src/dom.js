@@ -1,3 +1,7 @@
+import { controller } from "./controller.js";
+
+const dataArray = controller.getData();
+
 class DomController {
 
     projectCard(title) {
@@ -33,4 +37,29 @@ class DomController {
         return todo;
     }
 
+    renderApp() {
+        const mainContainer = document.querySelector('#mainContainer');
+        const projectContainer = document.querySelector('#projectContainer');
+        const todoContainer = document.querySelector('#todoContainer');
+
+        dataArray.forEach(project => {
+            const projectCard = this.projectCard(project.title);
+
+            projectCard.addEventListener('click', () => {
+                todoContainer.textContent = '';
+                project.todos.forEach(todo => {
+                    const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
+                    todoContainer.appendChild(todoCard);
+                });
+            });
+            projectContainer.appendChild(projectCard);
+
+        });
+        mainContainer.appendChild(projectContainer);
+        mainContainer.appendChild(todoContainer);
+    }
+
 }
+
+const dom = new DomController;
+dom.renderApp();
