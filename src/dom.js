@@ -40,6 +40,7 @@ class DomController {
     renderApp() {
         const mainContainer = document.querySelector('#mainContainer');
         const projectContainer = document.querySelector('#projectContainer');
+        projectContainer.textContent = ''
         const todoContainer = document.querySelector('#todoContainer');
 
         dataArray.forEach(project => {
@@ -59,7 +60,27 @@ class DomController {
         mainContainer.appendChild(todoContainer);
     }
 
+
+    showProjectForm() {
+        const projectModal = document.querySelector('#projectModal');
+        const addProjectBtn = document.querySelector('#addProjectBtn');
+
+        addProjectBtn.addEventListener('click', () => {
+            projectModal.show();
+        });
+    }
+
+    hideProjectForm() {
+        const projectModal = document.querySelector('#projectModal');
+        const closeProjectModalBtn = document.querySelector('#closeProjectModalBtn');
+        closeProjectModalBtn.addEventListener('click', () => {
+            projectModal.close();
+        })
+    }
 }
 
 const dom = new DomController;
 dom.renderApp();
+dom.showProjectForm();
+dom.hideProjectForm();
+dom.submitProjectForm();
