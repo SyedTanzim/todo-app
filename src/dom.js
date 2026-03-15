@@ -8,7 +8,22 @@ class DomController {
 
         const projectCard = document.createElement('div');
         projectCard.className = 'project'
-        projectCard.textContent = title;
+
+        const projectTitle = document.createElement('h1');
+        projectTitle.className = 'projectTitle'
+        projectTitle.textContent = title;
+        
+        const projectEditBtn = document.createElement('button');
+        projectEditBtn.className = 'projectEditBtn'
+        projectEditBtn.textContent = 'Edit';
+
+        const projectDeleteBtn = document.createElement('button');
+        projectDeleteBtn.className = 'projectDeleteBtn'
+        projectDeleteBtn.textContent = 'Delete';
+
+        projectCard.appendChild(projectTitle);
+        projectCard.appendChild(projectEditBtn);
+        projectCard.appendChild(projectDeleteBtn);
 
         return projectCard;
     }
@@ -96,6 +111,10 @@ class DomController {
             projectForm.reset();
             this.renderApp();
         });
+    }
+
+    deleteProject() {
+
     }
 }
 
