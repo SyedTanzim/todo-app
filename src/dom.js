@@ -4,7 +4,7 @@ const dataArray = controller.getData();
 
 class DomController {
 
-    projectCard(title) {
+    projectCard(title, todos) {
 
         const projectCard = document.createElement('div');
         projectCard.className = 'project'
@@ -12,7 +12,17 @@ class DomController {
         const projectTitle = document.createElement('h1');
         projectTitle.className = 'projectTitle'
         projectTitle.textContent = title;
-        
+
+        projectTitle.addEventListener('click', () => {
+            const todoContainer = document.querySelector('#todoContainer');
+            todoContainer.textContent = '';
+            todos.forEach(todo => {
+                const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
+                todoContainer.appendChild(todoCard);
+            });
+            projectCard.appendChild(todoContainer);
+        });
+
         const projectEditBtn = document.createElement('button');
         projectEditBtn.className = 'projectEditBtn'
         projectEditBtn.textContent = 'Edit';
@@ -56,25 +66,13 @@ class DomController {
         const mainContainer = document.querySelector('#mainContainer');
         const projectContainer = document.querySelector('#projectContainer');
         projectContainer.textContent = ''
-        const todoContainer = document.querySelector('#todoContainer');
 
         dataArray.forEach(project => {
-            const projectCard = this.projectCard(project.title);
-
-            projectCard.addEventListener('click', () => {
-                todoContainer.textContent = '';
-                project.todos.forEach(todo => {
-                    const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
-                    todoContainer.appendChild(todoCard);
-                });
-            });
+            const projectCard = this.projectCard(project.title, project.todos);
             projectContainer.appendChild(projectCard);
-
         });
         mainContainer.appendChild(projectContainer);
-        mainContainer.appendChild(todoContainer);
     }
-
 
     showProjectForm() {
         const projectModal = document.querySelector('#projectModal');
