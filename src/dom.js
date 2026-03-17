@@ -1,13 +1,12 @@
 import { controller } from "./controller.js";
 
-const dataArray = controller.getData();
-
 class DomController {
 
-    projectCard(title, todos) {
+    projectCard(title, id, todos) {
 
         const projectCard = document.createElement('div');
         projectCard.className = 'project'
+        projectCard.dataset.id = id;
 
         const projectTitle = document.createElement('h1');
         projectTitle.className = 'projectTitle'
@@ -30,6 +29,11 @@ class DomController {
         const projectDeleteBtn = document.createElement('button');
         projectDeleteBtn.className = 'projectDeleteBtn'
         projectDeleteBtn.textContent = 'Delete';
+
+        projectDeleteBtn.addEventListener('click', () => {
+            controller.removeProject(projectCard.dataset.id);
+            this.renderApp();
+        });
 
         projectCard.appendChild(projectTitle);
         projectCard.appendChild(projectEditBtn);
@@ -62,18 +66,6 @@ class DomController {
         return todo;
     }
 
-    renderApp() {
-        const mainContainer = document.querySelector('#mainContainer');
-        const projectContainer = document.querySelector('#projectContainer');
-        projectContainer.textContent = ''
-
-        dataArray.forEach(project => {
-            const projectCard = this.projectCard(project.title, project.todos);
-            projectContainer.appendChild(projectCard);
-        });
-        mainContainer.appendChild(projectContainer);
-    }
-
     showProjectForm() {
         const projectModal = document.querySelector('#projectModal');
         const addProjectBtn = document.querySelector('#addProjectBtn');
@@ -95,7 +87,7 @@ class DomController {
         controller.generateProject(title);
         this.renderApp();
     }
-
+    
     submitProjectForm() {
         const projectModal = document.querySelector('#projectModal');
         const submitProjectBtn = document.querySelector('#submitProjectBtn');
@@ -111,8 +103,16 @@ class DomController {
         });
     }
 
-    deleteProject() {
+    renderApp() {
+        const mainContainer = document.querySelector('#mainContainer');
+        const projectContainer = document.querySelector('#projectContainer');
+        projectContainer.textContent = ''
 
+        controller.getData().forEach(project => {
+            const projectCard = this.projectCard(project.title, project.id, project.todos);
+            projectContainer.appendChild(projectCard);
+        });
+        mainContainer.appendChild(projectContainer);
     }
 }
 
