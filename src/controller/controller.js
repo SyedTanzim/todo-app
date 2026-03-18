@@ -1,7 +1,7 @@
 import { ProjectGenerator } from "../model/project.js";
 import { TodoGenerator } from "../model/todo.js";
 import { dataManager } from "../model/data.js";
-
+import { dom } from "../views/dom.js";
 
 /**
  * Handles all Project & Todo operations
@@ -24,12 +24,15 @@ export class ControllerClass {
         const project = new ProjectGenerator(title);
         this.dataArray.push(project);
         dataManager.saveData(this.dataArray);
+        dom.renderApp();
+        console.log(this.getData());
     }
 
     // Deletes a project
     removeProject(removeId) {
         this.dataArray = this.dataArray.filter(p => p.id !== removeId);
         dataManager.saveData(this.dataArray);
+        dom.renderApp();
     }
 
     // Creates a todo and adds it to the project
@@ -42,6 +45,7 @@ export class ControllerClass {
             const todo = new TodoGenerator(title, description, date, priority);
             project.addTodo(todo);
             dataManager.saveData(this.dataArray);
+            dom.renderApp();
         };
     }
 }

@@ -1,0 +1,68 @@
+import { controller } from "../controller/controller.js";
+
+class CardHandler {
+
+    projectCard(title, id, todos) {
+
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project'
+        projectCard.dataset.id = id;
+
+        const projectTitle = document.createElement('h1');
+        projectTitle.className = 'projectTitle'
+        projectTitle.textContent = title;
+
+        projectTitle.addEventListener('click', () => {
+            const todoContainer = document.querySelector('#todoContainer');
+            todoContainer.textContent = '';
+            todos.forEach(todo => {
+                const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
+                todoContainer.appendChild(todoCard);
+            });
+        });
+
+        const projectEditBtn = document.createElement('button');
+        projectEditBtn.className = 'projectEditBtn'
+        projectEditBtn.textContent = 'Edit';
+
+        const projectDeleteBtn = document.createElement('button');
+        projectDeleteBtn.className = 'projectDeleteBtn'
+        projectDeleteBtn.textContent = 'Delete';
+
+        projectDeleteBtn.addEventListener('click', () => {
+            controller.removeProject(projectCard.dataset.id);
+        });
+
+        projectCard.appendChild(projectTitle);
+        projectCard.appendChild(projectEditBtn);
+        projectCard.appendChild(projectDeleteBtn);
+
+        return projectCard;
+    }
+
+    todoCard(title, description, date, priority) {
+        const todo = document.createElement('div');
+        todo.className = 'todo';
+
+        const todoTitle = document.createElement('h3');
+        todoTitle.textContent = title;
+
+        const todoDescription = document.createElement('p');
+        todoDescription.textContent = description;
+
+        const todoDate = document.createElement('p');
+        todoDate.textContent = date;
+
+        const todoPriority = document.createElement('p');
+        todoPriority.textContent = priority;
+
+        todo.appendChild(todoTitle);
+        todo.appendChild(todoDescription);
+        todo.appendChild(todoDate);
+        todo.appendChild(todoPriority);
+
+        return todo;
+    }
+}
+
+ export const cardHandler = new CardHandler;
