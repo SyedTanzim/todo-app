@@ -9,22 +9,39 @@
 
 <body>
 
+    <dialog class="modal" id="projectModal">
+        <form action="" id="projectForm">
+            <input type="text" placeholder="enter title" id="projectTitle" required>
+            <button id="closeProjectModalBtn">close</button>
+            <button id="submitProjectBtn">submit</button>
+        </form>
+    </dialog>
+
+    <dialog class="modal" id="todoModal">
+        <form action="" id="addTodoForm">
+            <input id="todoTitle" type="text" placeholder="enter title" required>
+            <input id="todoDescription" type="text" placeholder="enter description" required>
+            <input id="todoDate" type="date" placeholder="enter date" required>
+
+            <label for="priority">select priority level</label>
+            <select name="priority" id="priority">
+                <option value="low">low</option>
+                <option value="med">med</option>
+                <option value="high">high</option>
+            </select>
+            <button id="closeTodoModalBtn">close</button>
+            <button id="submitTodoBtn">submit</button>
+        </form>
+    </dialog>
+
+    <nav id="navbar">
+        <button id="addProjectBtn">Add Project</button>
+        <button id="addTodoBtn">Add Todo</button>
+    </nav>
+
     <div id="mainContainer">
-
-        <dialog class="modal" id="projectModal">
-            <form action="" id="projectForm">
-                <input type="text" placeholder="enter title" id="projectTitle" required>
-                <button id="closeProjectModalBtn">close</button>
-                <button id="submitProjectBtn">submit</button>
-            </form>
-        </dialog>
-
-        <nav id="navbar"><button id="addProjectBtn">Add Project</button></nav>
-
         <div id="projectContainer"></div>
-
         <div id="todoContainer"></div>
-
     </div>
 
     <script type="module" src="dom.js"></script>

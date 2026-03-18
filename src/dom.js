@@ -19,7 +19,6 @@ class DomController {
                 const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
                 todoContainer.appendChild(todoCard);
             });
-            projectCard.appendChild(todoContainer);
         });
 
         const projectEditBtn = document.createElement('button');
@@ -87,7 +86,7 @@ class DomController {
         controller.generateProject(title);
         this.renderApp();
     }
-    
+
     submitProjectForm() {
         const projectModal = document.querySelector('#projectModal');
         const submitProjectBtn = document.querySelector('#submitProjectBtn');
@@ -101,6 +100,23 @@ class DomController {
             projectForm.reset();
             this.renderApp();
         });
+    }
+
+    showTodoForm() {
+        const todoModal = document.querySelector('#todoModal');
+        const addTodoBtn = document.querySelector('#addTodoBtn');
+
+        addTodoBtn.addEventListener('click', () => {
+            todoModal.show();
+        });
+    }
+
+    hideTodoForm() {
+        const todoModal = document.querySelector('#todoModal');
+        const closeTodoModalBtn = document.querySelector('#closeTodoModalBtn');
+        closeTodoModalBtn.addEventListener('click', () => {
+            todoModal.close();
+        })
     }
 
     renderApp() {
@@ -121,3 +137,5 @@ dom.renderApp();
 dom.showProjectForm();
 dom.hideProjectForm();
 dom.submitProjectForm();
+dom.showTodoForm();
+dom.hideTodoForm();
