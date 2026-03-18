@@ -1,6 +1,6 @@
-import { ProjectGenerator } from "./project.js";
-import { TodoGenerator } from "./todo.js";
-import { dataManager } from "./data.js";
+import { ProjectGenerator } from "../model/project.js";
+import { TodoGenerator } from "../model/todo.js";
+import { dataManager } from "../model/data.js";
 
 
 /**

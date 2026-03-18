@@ -1,4 +1,4 @@
-import { controller } from "./controller.js";
+import { controller } from "../controller/controller.js";
 
 class DomController {
 
