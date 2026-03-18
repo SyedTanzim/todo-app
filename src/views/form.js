@@ -3,10 +3,12 @@ import { controller } from "../controller/controller.js";
 class FormHandler {
 
     showProjectForm() {
+        const todoModal = document.querySelector('#todoModal');
         const projectModal = document.querySelector('#projectModal');
         const addProjectBtn = document.querySelector('#addProjectBtn');
 
         addProjectBtn.addEventListener('click', () => {
+            todoModal.close();
             projectModal.show();
         });
     }
@@ -35,10 +37,12 @@ class FormHandler {
     }
 
     showTodoForm() {
+        const projectModal = document.querySelector('#projectModal');
         const todoModal = document.querySelector('#todoModal');
         const addTodoBtn = document.querySelector('#addTodoBtn');
 
         addTodoBtn.addEventListener('click', () => {
+            projectModal.close();
             todoModal.show();
         });
     }
