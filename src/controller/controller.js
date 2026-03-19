@@ -11,7 +11,7 @@ export class ControllerClass {
 
     constructor() {
         // Loads saved projects when the app starts
-        this.dataArray = dataManager.savedDataChecker();
+        this.dataArray = dataManager.savedDataReconstructor();
         this.activeProjectID = null;
     }
 

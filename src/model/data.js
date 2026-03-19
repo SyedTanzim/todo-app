@@ -15,7 +15,7 @@ class DataManager {
      * Required for safe initialization of application
      */
     savedDataChecker() {
-        const savedData = this.savedDataReconstructor();
+        const savedData = JSON.parse(localStorage.getItem('projects'));
         if (savedData) {
             return savedData;
         } else {
@@ -28,7 +28,7 @@ class DataManager {
      * Required to restore project methods lost during JSON stringification.
      */
     savedProjectReconstructor() {
-        const rawData = JSON.parse(localStorage.getItem('projects'));
+        const rawData = this.savedDataChecker();
 
         const reconstructedProjects = rawData.map(project => 
             new ProjectGenerator(project.title, project.id, project.todos)
