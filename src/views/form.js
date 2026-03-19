@@ -55,6 +55,21 @@ class FormHandler {
             todoModal.close();
         });
     }
+    
+    submitTodoForm(){
+        const todoModal = document.querySelector('#todoModal');
+        const submitTodoBtn = document.querySelector('#submitTodoBtn');
+        submitTodoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const title = document.querySelector('#todoTitle').value;
+            const description = document.querySelector('#todoDescription').value;
+            const date = document.querySelector('#todoDate').value;
+            const priority = document.querySelector('#todoPriority').value;
+            const projectID = controller.activeProjectID ? controller.activeProjectID  : 'default'; 
+            controller.addTodoToProject(projectID, title,description,date,priority);
+            todoModal.close();        
+        });
+    }
 }
 
 export const formHandler = new FormHandler;

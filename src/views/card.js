@@ -15,6 +15,7 @@ class CardHandler {
         projectTitle.addEventListener('click', () => {
             const todoContainer = document.querySelector('#todoContainer');
             todoContainer.textContent = '';
+            controller.activeProjectID = id;            
             todos.forEach(todo => {
                 const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
                 todoContainer.appendChild(todoCard);

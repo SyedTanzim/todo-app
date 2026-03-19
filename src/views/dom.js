@@ -20,7 +20,8 @@ class DomController {
 export const dom = new DomController;
 formHandler.showProjectForm();
 formHandler.hideProjectForm();
+formHandler.submitProjectForm();
 formHandler.showTodoForm();
 formHandler.hideTodoForm();
-formHandler.submitProjectForm();
+formHandler.submitTodoForm();
 dom.renderApp();

@@ -12,6 +12,7 @@ export class ControllerClass {
     constructor() {
         // Loads saved projects when the app starts
         this.dataArray = dataManager.savedDataChecker();
+        this.activeProjectID = null;
     }
 
     // Return all projects
@@ -37,8 +38,6 @@ export class ControllerClass {
 
     // Creates a todo and adds it to the project
     addTodoToProject(projectId, title, description, date, priority) {
-        this.dataArray = dataManager.savedProjectReconstructor();
-
         const project = this.dataArray.find(p => p.id === projectId);
 
         if (project) {           

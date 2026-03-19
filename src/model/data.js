@@ -15,7 +15,7 @@ class DataManager {
      * Required for safe initialization of application
      */
     savedDataChecker() {
-        const savedData = JSON.parse(localStorage.getItem('projects'));
+        const savedData = this.savedDataReconstructor();
         if (savedData) {
             return savedData;
         } else {
