@@ -1,6 +1,5 @@
 import { controller } from "../controller/controller.js";
 import { cardHandler } from "./card.js";
-import { formHandler } from "./form.js";
 
 class DomController {
 
@@ -29,10 +28,3 @@ class DomController {
 }
 
 export const dom = new DomController;
-formHandler.showProjectForm();
-formHandler.hideProjectForm();
-formHandler.submitProjectForm();
-formHandler.showTodoForm();
-formHandler.hideTodoForm();
-formHandler.submitTodoForm();
-dom.renderApp();
