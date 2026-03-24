@@ -57,6 +57,7 @@ class FormHandler {
     }
     
     submitTodoForm(){
+        const todoForm = document.querySelector('#todoForm');
         const todoModal = document.querySelector('#todoModal');
         const submitTodoBtn = document.querySelector('#submitTodoBtn');
         submitTodoBtn.addEventListener('click', (e) => {
@@ -68,6 +69,7 @@ class FormHandler {
             const projectID = controller.activeProjectID ? controller.activeProjectID  : 'default'; 
             controller.addTodoToProject(projectID, title,description,date,priority);
             todoModal.close();        
+            todoForm.reset();
         });
     }
 }
