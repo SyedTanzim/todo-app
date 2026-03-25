@@ -17,7 +17,7 @@ class CardHandler {
         projectTitle.addEventListener('click', () => {
             const todoContainer = document.querySelector('#todoContainer');
             todoContainer.textContent = '';
-            controller.activeProjectID = id;            
+            controller.activeProjectID = id;
             todos.forEach(todo => {
                 const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
                 todoContainer.appendChild(todoCard);
@@ -60,13 +60,25 @@ class CardHandler {
         const todoPriority = document.createElement('p');
         todoPriority.textContent = priority;
 
+        const todoEditBtn = document.createElement('button');
+        todoEditBtn.className = 'todoEditBtn'
+        todoEditBtn.textContent = 'Edit';
+
+        const todoDeleteBtn = document.createElement('button');
+        todoDeleteBtn.className = 'todoDeleteBtn'
+        todoDeleteBtn.textContent = 'Delete';
+
+        // Deletes the project from localStorage
+
         todo.appendChild(todoTitle);
         todo.appendChild(todoDescription);
         todo.appendChild(todoDate);
         todo.appendChild(todoPriority);
+        todo.appendChild(todoEditBtn);
+        todo.appendChild(todoDeleteBtn);
 
         return todo;
     }
 }
 
- export const cardHandler = new CardHandler;
+export const cardHandler = new CardHandler;
