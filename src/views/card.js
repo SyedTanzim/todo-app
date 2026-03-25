@@ -1,5 +1,6 @@
 import { controller } from "../controller/controller.js";
 
+// Handles all card-generation functions
 class CardHandler {
 
     projectCard(title, id, todos) {
@@ -12,6 +13,7 @@ class CardHandler {
         projectTitle.className = 'projectTitle'
         projectTitle.textContent = title;
 
+        // Renders the todos of the active project when it is clicked
         projectTitle.addEventListener('click', () => {
             const todoContainer = document.querySelector('#todoContainer');
             todoContainer.textContent = '';
@@ -30,6 +32,7 @@ class CardHandler {
         projectDeleteBtn.className = 'projectDeleteBtn'
         projectDeleteBtn.textContent = 'Delete';
 
+        // Deletes the project from localStorage
         projectDeleteBtn.addEventListener('click', () => {
             controller.removeProject(projectCard.dataset.id);
         });
