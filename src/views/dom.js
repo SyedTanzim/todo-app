@@ -27,7 +27,7 @@ class DomController {
 
         if (project) {
             project.todos.forEach(todo => {
-                const todoCard = cardHandler.todoCard(todo.title, todo.description, todo.date, todo.priority);
+                const todoCard = cardHandler.todoCard(todo.title, todo.description, todo.date, todo.priority, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         }
