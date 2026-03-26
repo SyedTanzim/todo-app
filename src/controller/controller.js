@@ -49,8 +49,8 @@ export class ControllerClass {
     }
 
     // Deletes a todo
-    removeTodoFromProject(projectId, removeId){
-        const project = this.dataArray.find(p => p.id === projectId);
+    removeTodoFromProject(removeId){
+        const project = this.dataArray.find(p => p.id === this.activeProjectID);
 
         if(project){
             project.removeTodo(removeId);
