@@ -69,6 +69,11 @@ class CardHandler {
         todoDeleteBtn.className = 'todoDeleteBtn'
         todoDeleteBtn.textContent = 'Delete';
 
+        // Deletes the todo from localStorage
+        todoDeleteBtn.addEventListener('click', () => {
+            controller.removeTodoFromProject(todo.dataset.id);
+        });
+
         todo.appendChild(todoTitle);
         todo.appendChild(todoDescription);
         todo.appendChild(todoDate);
