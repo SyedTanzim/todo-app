@@ -47,6 +47,17 @@ export class ControllerClass {
             dom.renderApp();
         };
     }
+
+    // Deletes a todo
+    removeTodoFromProject(projectId, removeId){
+        const project = this.dataArray.find(p => p.id === projectId);
+
+        if(project){
+            project.removeTodo(removeId);
+            dataManager.saveData(this.dataArray);
+            dom.renderApp();
+        }
+    }
 }
 
 export const controller = new ControllerClass;
