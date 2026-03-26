@@ -19,7 +19,7 @@ class CardHandler {
             todoContainer.textContent = '';
             controller.activeProjectID = id;
             todos.forEach(todo => {
-                const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority);
+                const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         });
@@ -44,9 +44,10 @@ class CardHandler {
         return projectCard;
     }
 
-    todoCard(title, description, date, priority) {
+    todoCard(title, description, date, priority, id) {
         const todo = document.createElement('div');
         todo.className = 'todo';
+        todo.dataset.id = id;
 
         const todoTitle = document.createElement('h3');
         todoTitle.textContent = title;
@@ -67,8 +68,6 @@ class CardHandler {
         const todoDeleteBtn = document.createElement('button');
         todoDeleteBtn.className = 'todoDeleteBtn'
         todoDeleteBtn.textContent = 'Delete';
-
-        // Deletes the project from localStorage
 
         todo.appendChild(todoTitle);
         todo.appendChild(todoDescription);
