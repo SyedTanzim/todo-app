@@ -15,10 +15,12 @@ class FormHandler {
     }
 
     hideProjectForm() {
+        const projectForm = document.querySelector('#projectForm');
         const projectModal = document.querySelector('#projectModal');
         const closeProjectModalBtn = document.querySelector('#closeProjectModalBtn');
 
         closeProjectModalBtn.addEventListener('click', () => {
+            projectForm.reset();
             projectModal.close();
         });
     }
@@ -52,10 +54,12 @@ class FormHandler {
 
 
     hideTodoForm() {
+        const todoForm = document.querySelector('#todoForm');
         const todoModal = document.querySelector('#todoModal');
         const closeTodoModalBtn = document.querySelector('#closeTodoModalBtn');
 
         closeTodoModalBtn.addEventListener('click', () => {
+            todoForm.reset();
             todoModal.close();
         });
     }
