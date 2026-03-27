@@ -25,8 +25,8 @@ export class ControllerClass {
         const project = new ProjectGenerator(title);
         this.dataArray.push(project);
         dataManager.saveData(this.dataArray);
+        this.activeProjectID = project.id;
         dom.renderApp();
-        console.log(this.getData());
     }
 
     // Deletes a project
@@ -40,7 +40,7 @@ export class ControllerClass {
     addTodoToProject(projectId, title, description, date, priority) {
         const project = this.dataArray.find(p => p.id === projectId);
 
-        if (project) {           
+        if (project) {
             const todo = new TodoGenerator(title, description, date, priority);
             project.addTodo(todo);
             dataManager.saveData(this.dataArray);
@@ -49,10 +49,10 @@ export class ControllerClass {
     }
 
     // Deletes a todo
-    removeTodoFromProject(removeId){
+    removeTodoFromProject(removeId) {
         const project = this.dataArray.find(p => p.id === this.activeProjectID);
 
-        if(project){
+        if (project) {
             project.removeTodo(removeId);
             dataManager.saveData(this.dataArray);
             dom.renderApp();
