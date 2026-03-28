@@ -9,7 +9,6 @@ class CardHandler {
         const projectCard = document.createElement('div');
         projectCard.className = 'project'
         projectCard.dataset.id = id;
-        projectCard.dataset.editMode = false;
 
         const projectTitle = document.createElement('h1');
         projectTitle.className = 'projectTitle'
@@ -29,6 +28,12 @@ class CardHandler {
         const projectEditBtn = document.createElement('button');
         projectEditBtn.className = 'projectEditBtn'
         projectEditBtn.textContent = 'Edit';
+
+        projectEditBtn.addEventListener('click', () => {
+            controller.activeProjectID = id;
+            controller.editMode = true;
+            formHandler.showProjectForm(projectCard.dataset.id);
+        });
 
         const projectDeleteBtn = document.createElement('button');
         projectDeleteBtn.className = 'projectDeleteBtn'

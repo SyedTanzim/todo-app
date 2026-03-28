@@ -3,7 +3,13 @@ import { controller } from "../controller/controller.js";
 // Handles all form-related functions
 class FormHandler {
 
-    showProjectForm() {
+    showProjectForm(projectId) {
+        if (projectId) {
+            const project = controller.getData().find(project => project.id === projectId);
+            const projectTitle = document.querySelector('#projectTitle');
+            projectTitle.value = project.title;
+        }
+
         const todoModal = document.querySelector('#todoModal');
         const projectModal = document.querySelector('#projectModal');
         todoModal.close(); // Close the todo form
@@ -13,6 +19,7 @@ class FormHandler {
     hideProjectForm() {
         const projectForm = document.querySelector('#projectForm');
         const projectModal = document.querySelector('#projectModal');
+        controller.editMode = false;
         projectForm.reset();
         projectModal.close();
     }
@@ -23,9 +30,17 @@ class FormHandler {
         const projectForm = document.querySelector('#projectForm');
 
         const title = document.querySelector('#projectTitle').value;
-        controller.generateProject(title);
-        projectModal.close();
-        projectForm.reset();
+
+        if (controller.editMode == true) {
+            controller.editProject(title);
+            projectModal.close();
+            projectForm.reset();
+            controller.editMode = false;
+        } else {
+            controller.generateProject(title);
+            projectModal.close();
+            projectForm.reset();
+        }
     }
 
     showTodoForm() {

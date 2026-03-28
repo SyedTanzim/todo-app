@@ -13,6 +13,7 @@ export class ControllerClass {
         // Loads saved projects when the app starts
         this.dataArray = dataManager.savedDataReconstructor();
         this.activeProjectID = null;
+        this.editMode = false;
     }
 
     // Return all projects
@@ -32,6 +33,13 @@ export class ControllerClass {
     // Deletes a project
     removeProject(removeId) {
         this.dataArray = this.dataArray.filter(p => p.id !== removeId);
+        dataManager.saveData(this.dataArray);
+        dom.renderApp();
+    }
+
+    editProject(projectTitle) {
+        const project = this.dataArray.find(project => project.id === this.activeProjectID);
+        project.title = projectTitle
         dataManager.saveData(this.dataArray);
         dom.renderApp();
     }
