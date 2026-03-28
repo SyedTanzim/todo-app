@@ -19,7 +19,7 @@ class FormHandler {
     hideProjectForm() {
         const projectForm = document.querySelector('#projectForm');
         const projectModal = document.querySelector('#projectModal');
-        controller.editMode = false;
+        controller.projectEditMode = false;
         projectForm.reset();
         projectModal.close();
     }
@@ -31,11 +31,11 @@ class FormHandler {
 
         const title = document.querySelector('#projectTitle').value;
 
-        if (controller.editMode == true) {
+        if (controller.projectEditMode == true) {
             controller.editProject(title);
             projectModal.close();
             projectForm.reset();
-            controller.editMode = false;
+            controller.projectEditMode = false;
         } else {
             controller.generateProject(title);
             projectModal.close();
@@ -43,7 +43,23 @@ class FormHandler {
         }
     }
 
-    showTodoForm() {
+    showTodoForm(todoId) {
+        if (todoId) {
+            const project = controller.getData().find(project => project.id === controller.activeProjectID);
+            const todo = project.todos.find(todo => todo.id === todoId);
+
+            const todoTitle = document.querySelector('#todoTitle');
+            todoTitle.value = todo.title;
+
+            const todoDescription = document.querySelector('#todoDescription');
+            todoDescription.value = todo.description;
+
+            const todoDate = document.querySelector('#todoDate');
+            todoDate.value = todo.date;
+
+            const todoPriority = document.querySelector('#todoPriority');
+            todoPriority.value = todo.priority;
+        }
         const projectModal = document.querySelector('#projectModal');
         const todoModal = document.querySelector('#todoModal');
         projectModal.close(); //Close the project form
@@ -55,6 +71,7 @@ class FormHandler {
         const todoModal = document.querySelector('#todoModal');
         todoForm.reset();
         todoModal.close();
+        controller.todoEditMode = false;
     }
 
     // Adds the todo to the active project when the user clicks the submit button
@@ -70,9 +87,17 @@ class FormHandler {
         // If no active project is selected, the project ID defaults to 'default'
         const projectID = controller.activeProjectID ? controller.activeProjectID : 'default';
 
-        controller.addTodoToProject(projectID, title, description, date, priority);
-        todoModal.close();
-        todoForm.reset();
+        if(controller.todoEditMode == true){
+            controller.editTodo(title, description, date, priority);
+            todoModal.close();
+            todoForm.reset();
+            controller.todoEditMode = false;
+        } else{
+            controller.addTodoToProject(projectID, title, description, date, priority);
+            todoModal.close();
+            todoForm.reset();
+        }
+
     }
 }
 

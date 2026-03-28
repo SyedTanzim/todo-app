@@ -13,7 +13,9 @@ export class ControllerClass {
         // Loads saved projects when the app starts
         this.dataArray = dataManager.savedDataReconstructor();
         this.activeProjectID = null;
-        this.editMode = false;
+        this.projectEditMode = false;
+        this.activeTodoID = null;
+        this.todoEditMode = false;
     }
 
     // Return all projects
@@ -65,6 +67,18 @@ export class ControllerClass {
             dataManager.saveData(this.dataArray);
             dom.renderApp();
         }
+    }
+
+    editTodo(todoTitle, todoDescription, todoDate, todoPriority) {
+        const project = this.dataArray.find(project => project.id === this.activeProjectID);
+        const todo = project.todos.find(todo => todo.id === this.activeTodoID);
+
+        todo.title = todoTitle;
+        todo.description = todoDescription;
+        todo.date = todoDate;
+        todo.priority = todoPriority;
+        dataManager.saveData(this.dataArray);
+        dom.renderApp();
     }
 }
 

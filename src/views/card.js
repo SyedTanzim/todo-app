@@ -31,8 +31,8 @@ class CardHandler {
 
         projectEditBtn.addEventListener('click', () => {
             controller.activeProjectID = id;
-            controller.editMode = true;
-            formHandler.showProjectForm(projectCard.dataset.id);
+            controller.projectEditMode = true;
+            formHandler.showProjectForm(id);
         });
 
         const projectDeleteBtn = document.createElement('button');
@@ -41,7 +41,7 @@ class CardHandler {
 
         // Deletes the project from localStorage
         projectDeleteBtn.addEventListener('click', () => {
-            controller.removeProject(projectCard.dataset.id);
+            controller.removeProject(id);
         });
 
         projectCard.appendChild(projectTitle);
@@ -72,13 +72,19 @@ class CardHandler {
         todoEditBtn.className = 'todoEditBtn'
         todoEditBtn.textContent = 'Edit';
 
+        todoEditBtn.addEventListener('click', () => {
+            controller.activeTodoID = id;
+            controller.todoEditMode = true;
+            formHandler.showTodoForm(id);
+        });
+
         const todoDeleteBtn = document.createElement('button');
         todoDeleteBtn.className = 'todoDeleteBtn'
         todoDeleteBtn.textContent = 'Delete';
 
         // Deletes the todo from localStorage
         todoDeleteBtn.addEventListener('click', () => {
-            controller.removeTodoFromProject(todo.dataset.id);
+            controller.removeTodoFromProject(id);
         });
 
         todo.appendChild(todoTitle);
