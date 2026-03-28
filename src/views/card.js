@@ -1,4 +1,5 @@
 import { controller } from "../controller/controller.js";
+import { formHandler } from "./form.js";
 
 // Handles all card-generation functions
 class CardHandler {
@@ -8,6 +9,7 @@ class CardHandler {
         const projectCard = document.createElement('div');
         projectCard.className = 'project'
         projectCard.dataset.id = id;
+        projectCard.dataset.editMode = false;
 
         const projectTitle = document.createElement('h1');
         projectTitle.className = 'projectTitle'
@@ -82,6 +84,69 @@ class CardHandler {
         todo.appendChild(todoDeleteBtn);
 
         return todo;
+    }
+
+    buttonsGenerator() {
+        const navbar = document.querySelector('#navbar');
+        const projectForm = document.querySelector('#projectForm');
+        const todoForm = document.querySelector('#todoForm');
+
+        const addProjectBtn = document.createElement('button');
+        addProjectBtn.id = 'addProjectBtn';
+        addProjectBtn.textContent = 'Add Project';
+
+        addProjectBtn.addEventListener('click', () => {
+            formHandler.showProjectForm();
+        });
+
+        const closeProjectModalBtn = document.createElement('button');
+        closeProjectModalBtn.id = 'closeProjectModalBtn';
+        closeProjectModalBtn.textContent = 'Close';
+
+        closeProjectModalBtn.addEventListener('click', () => {
+            formHandler.hideProjectForm();
+        });
+
+        const submitProjectBtn = document.createElement('button');
+        submitProjectBtn.id = 'submitProjectBtn';
+        submitProjectBtn.textContent = 'Submit';
+
+        submitProjectBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevents the browser from reloading or sending a traditional HTTP request
+            formHandler.submitProjectForm();
+        });
+
+        const addTodoBtn = document.createElement('button');
+        addTodoBtn.id = 'addTodoBtn';
+        addTodoBtn.textContent = 'Add Todo';
+
+        addTodoBtn.addEventListener('click', () => {
+            formHandler.showTodoForm();
+        });
+
+        const closeTodoModalBtn = document.createElement('button');
+        closeTodoModalBtn.id = 'closeTodoModalBtn';
+        closeTodoModalBtn.textContent = 'Close';
+
+        closeTodoModalBtn.addEventListener('click', () => {
+            formHandler.hideTodoForm();
+        });
+
+        const submitTodoBtn = document.createElement('button');
+        submitTodoBtn.id = 'submitTodoBtn';
+        submitTodoBtn.textContent = 'Submit';
+
+        submitTodoBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevents the browser from reloading or sending a traditional HTTP request
+            formHandler.submitTodoForm();
+        });
+
+        navbar.appendChild(addProjectBtn);
+        navbar.appendChild(addTodoBtn);
+        projectForm.appendChild(submitProjectBtn);
+        projectForm.appendChild(closeProjectModalBtn);
+        todoForm.appendChild(submitTodoBtn);
+        todoForm.appendChild(closeTodoModalBtn);
     }
 }
 
