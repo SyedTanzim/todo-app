@@ -16,10 +16,10 @@ class DomController {
             projectContainer.appendChild(projectCard);
         });
 
-        // If no active project is selected, the project ID defaults to 'default'
-        const projectID = controller.activeProjectID ? controller.activeProjectID : 'default';
+        // If no active project is selected, the active project ID defaults to 'default'
+        controller.activeProjectID = controller.activeProjectID != null ? controller.activeProjectID : 'default';
 
-        const project = controller.getData().find(project => project.id == projectID);
+        const project = controller.getData().find(project => project.id == controller.activeProjectID);
         const todoContainer = document.querySelector('#todoContainer');
         
         // Clears the todoContainer before rebuilding it

@@ -85,7 +85,7 @@ class FormHandler {
         const priority = document.querySelector('#todoPriority').value;
 
         // If no active project is selected, the project ID defaults to 'default'
-        const projectID = controller.activeProjectID ? controller.activeProjectID : 'default';
+        controller.activeProjectID = controller.activeProjectID != null ? controller.activeProjectID : 'default';
 
         if(controller.todoEditMode == true){
             controller.editTodo(title, description, date, priority);
@@ -93,7 +93,7 @@ class FormHandler {
             todoForm.reset();
             controller.todoEditMode = false;
         } else{
-            controller.addTodoToProject(projectID, title, description, date, priority);
+            controller.addTodoToProject(title, description, date, priority);
             todoModal.close();
             todoForm.reset();
         }

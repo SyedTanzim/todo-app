@@ -47,8 +47,8 @@ export class ControllerClass {
     }
 
     // Creates a todo and adds it to the project
-    addTodoToProject(projectId, title, description, date, priority) {
-        const project = this.dataArray.find(p => p.id === projectId);
+    addTodoToProject(title, description, date, priority) {
+        const project = this.dataArray.find(p => p.id === this.activeProjectID);
 
         if (project) {
             const todo = new TodoGenerator(title, description, date, priority);
