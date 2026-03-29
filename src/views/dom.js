@@ -1,5 +1,6 @@
 import { controller } from "../controller/controller.js";
 import { cardHandler } from "./card.js";
+import { format } from "date-fns";
 
 // Handles the rendering of the application
 class DomController {
@@ -27,7 +28,7 @@ class DomController {
 
         if (project) {
             project.todos.forEach(todo => {
-                const todoCard = cardHandler.todoCard(todo.title, todo.description, todo.date, todo.priority, todo.id);
+                const todoCard = cardHandler.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         }

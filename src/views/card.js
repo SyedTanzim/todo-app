@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { controller } from "../controller/controller.js";
 import { formHandler } from "./form.js";
 
@@ -20,7 +21,7 @@ class CardHandler {
             todoContainer.textContent = '';
             controller.activeProjectID = id;
             todos.forEach(todo => {
-                const todoCard = this.todoCard(todo.title, todo.description, todo.date, todo.priority, todo.id);
+                const todoCard = this.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         });
