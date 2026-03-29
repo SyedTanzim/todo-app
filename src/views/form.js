@@ -4,14 +4,18 @@ import { controller } from "../controller/controller.js";
 class FormHandler {
 
     showProjectForm(projectId) {
+        const todoModal = document.querySelector('#todoModal');
+        const projectModal = document.querySelector('#projectModal');
+        const projectForm = document.querySelector('#projectForm');
+
         if (projectId) {
             const project = controller.getData().find(project => project.id === projectId);
             const projectTitle = document.querySelector('#projectTitle');
             projectTitle.value = project.title;
+        } else {
+            projectForm.reset();
         }
 
-        const todoModal = document.querySelector('#todoModal');
-        const projectModal = document.querySelector('#projectModal');
         todoModal.close(); // Close the todo form
         projectModal.show();
     }
@@ -44,6 +48,10 @@ class FormHandler {
     }
 
     showTodoForm(todoId) {
+        const todoForm = document.querySelector('#todoForm');
+        const projectModal = document.querySelector('#projectModal');
+        const todoModal = document.querySelector('#todoModal');
+
         if (todoId) {
             const project = controller.getData().find(project => project.id === controller.activeProjectID);
             const todo = project.todos.find(todo => todo.id === todoId);
@@ -59,9 +67,9 @@ class FormHandler {
 
             const todoPriority = document.querySelector('#todoPriority');
             todoPriority.value = todo.priority;
+        } else {
+            todoForm.reset();
         }
-        const projectModal = document.querySelector('#projectModal');
-        const todoModal = document.querySelector('#todoModal');
         projectModal.close(); //Close the project form
         todoModal.show();
     }
@@ -87,12 +95,12 @@ class FormHandler {
         // If no active project is selected, the project ID defaults to 'default'
         controller.activeProjectID = controller.activeProjectID != null ? controller.activeProjectID : 'default';
 
-        if(controller.todoEditMode == true){
+        if (controller.todoEditMode == true) {
             controller.editTodo(title, description, date, priority);
             todoModal.close();
             todoForm.reset();
             controller.todoEditMode = false;
-        } else{
+        } else {
             controller.addTodoToProject(title, description, date, priority);
             todoModal.close();
             todoForm.reset();

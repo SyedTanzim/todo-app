@@ -108,6 +108,7 @@ class CardHandler {
         addProjectBtn.textContent = 'Add Project';
 
         addProjectBtn.addEventListener('click', () => {
+            controller.projectEditMode = false;
             formHandler.showProjectForm();
         });
 
@@ -133,6 +134,7 @@ class CardHandler {
         addTodoBtn.textContent = 'Add Todo';
 
         addTodoBtn.addEventListener('click', () => {
+            controller.todoEditMode = false;
             formHandler.showTodoForm();
         });
 
