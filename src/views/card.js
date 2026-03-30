@@ -21,7 +21,7 @@ class CardHandler {
             todoContainer.textContent = '';
             controller.activeProjectID = id;
             todos.forEach(todo => {
-                const todoCard = this.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.id);
+                const todoCard = this.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.status, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         });
@@ -52,10 +52,11 @@ class CardHandler {
         return projectCard;
     }
 
-    todoCard(title, description, date, priority, id) {
+    todoCard(title, description, date, priority, status, id) {
         const todo = document.createElement('div');
         todo.className = 'todo';
         todo.dataset.id = id;
+        todo.dataset.status = status;
 
         const todoTitle = document.createElement('h3');
         todoTitle.textContent = title;
@@ -68,6 +69,17 @@ class CardHandler {
 
         const todoPriority = document.createElement('p');
         todoPriority.textContent = priority;
+
+        const todoStatusCheckbox = document.createElement('input');
+        todoStatusCheckbox.type = 'checkbox';
+        todoStatusCheckbox.className = 'todoStatusCheckbox';
+        
+        todoStatusCheckbox.checked = status;
+
+        todoStatusCheckbox.addEventListener('click', () => {
+            controller.activeTodoID = id;
+            controller.toggleTodoStatus();
+        });
 
         const todoEditBtn = document.createElement('button');
         todoEditBtn.className = 'todoEditBtn'
@@ -92,6 +104,7 @@ class CardHandler {
         todo.appendChild(todoDescription);
         todo.appendChild(todoDate);
         todo.appendChild(todoPriority);
+        todo.appendChild(todoStatusCheckbox);
         todo.appendChild(todoEditBtn);
         todo.appendChild(todoDeleteBtn);
 

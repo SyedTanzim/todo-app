@@ -22,13 +22,13 @@ class DomController {
 
         const project = controller.getData().find(project => project.id == controller.activeProjectID);
         const todoContainer = document.querySelector('#todoContainer');
-        
+
         // Clears the todoContainer before rebuilding it
         todoContainer.textContent = '';
 
         if (project) {
             project.todos.forEach(todo => {
-                const todoCard = cardHandler.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.id);
+                const todoCard = cardHandler.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.status, todo.id);
                 todoContainer.appendChild(todoCard);
             });
         }

@@ -28,7 +28,7 @@ export class ProjectGenerator {
     // Rebuilds todo methods lost during JSON stringification.
     todoReconstructor() {
         const reconstructedTodo = this.todos.map(todo =>
-            new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.id)
+            new TodoGenerator(todo.title, todo.description, todo.date, todo.priority, todo.status, todo.id)
         );
         this.todos = [];
         reconstructedTodo.forEach(todo => this.addTodo(todo));

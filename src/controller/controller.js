@@ -80,6 +80,14 @@ export class ControllerClass {
         dataManager.saveData(this.dataArray);
         dom.renderApp();
     }
+
+    toggleTodoStatus() {
+        const project = this.dataArray.find(project => project.id === this.activeProjectID);
+        const todo = project.todos.find(todo => todo.id === this.activeTodoID);
+        todo.toggleStatus();
+        dataManager.saveData(this.dataArray);
+        dom.renderApp();
+    }
 }
 
 export const controller = new ControllerClass;
