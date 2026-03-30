@@ -14,6 +14,6 @@ export class TodoGenerator {
     }
 
     toggleStatus() {
-        this.status = !this.status;
+        this.status = !this.status; // flips the value of status
     }
 };
