@@ -3,6 +3,7 @@ import { controller } from "../controller/controller.js";
 // Handles all form-related functions
 class FormHandler {
 
+    // If a project ID is passed, the form opens in edit mode
     showProjectForm(projectId) {
         const todoModal = document.querySelector('#todoModal');
         const projectModal = document.querySelector('#projectModal');
@@ -28,7 +29,7 @@ class FormHandler {
         projectModal.close();
     }
 
-    // Adds the project to localStorage when the user clicks the submit button
+    // Adds or edits a project and saves it to localStorage when the user clicks the submit button
     submitProjectForm() {
         const projectModal = document.querySelector('#projectModal');
         const projectForm = document.querySelector('#projectForm');
@@ -47,6 +48,7 @@ class FormHandler {
         }
     }
 
+    // If a todo ID is passed, the form opens in edit mode
     showTodoForm(todoId) {
         const todoForm = document.querySelector('#todoForm');
         const projectModal = document.querySelector('#projectModal');
@@ -82,7 +84,7 @@ class FormHandler {
         controller.todoEditMode = false;
     }
 
-    // Adds the todo to the active project when the user clicks the submit button
+    // Adds or edits a todo for the active project when the user clicks the submit button
     submitTodoForm() {
         const todoForm = document.querySelector('#todoForm');
         const todoModal = document.querySelector('#todoModal');

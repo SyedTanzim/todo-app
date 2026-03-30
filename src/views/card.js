@@ -55,8 +55,8 @@ class CardHandler {
     todoCard(title, description, date, priority, status, id) {
         const todo = document.createElement('div');
         todo.className = 'todo';
-        todo.dataset.id = id;
-        todo.dataset.status = status;
+        todo.dataset.id = id; // Stores the todo ID
+        todo.dataset.status = status; // Stores the todo status
 
         const todoTitle = document.createElement('h3');
         todoTitle.textContent = title;
@@ -74,8 +74,10 @@ class CardHandler {
         todoStatusCheckbox.type = 'checkbox';
         todoStatusCheckbox.className = 'todoStatusCheckbox';
         
+        // Sets the checkbox state based on the status during rendering
         todoStatusCheckbox.checked = status;
-
+        
+        // Sets the active todo ID and toggles the todo status
         todoStatusCheckbox.addEventListener('click', () => {
             controller.activeTodoID = id;
             controller.toggleTodoStatus();
@@ -84,7 +86,8 @@ class CardHandler {
         const todoEditBtn = document.createElement('button');
         todoEditBtn.className = 'todoEditBtn'
         todoEditBtn.textContent = 'Edit';
-
+        
+        // Sets the active todo ID and displays the todo form
         todoEditBtn.addEventListener('click', () => {
             controller.activeTodoID = id;
             controller.todoEditMode = true;
