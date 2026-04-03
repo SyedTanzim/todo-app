@@ -28,7 +28,7 @@ class CardHandler {
 
         const projectEditBtn = document.createElement('button');
         projectEditBtn.className = 'projectEditBtn'
-        projectEditBtn.textContent = 'Edit';
+        projectEditBtn.innerHTML = '<img width="20" height="20" src="https://img.icons8.com/windows/32/edit--v1.png" alt="edit--v1"/>';
 
         projectEditBtn.addEventListener('click', () => {
             controller.activeProjectID = id;
@@ -38,7 +38,7 @@ class CardHandler {
 
         const projectDeleteBtn = document.createElement('button');
         projectDeleteBtn.className = 'projectDeleteBtn'
-        projectDeleteBtn.textContent = 'Delete';
+        projectDeleteBtn.innerHTML = '<img width="20" height="20" src="https://img.icons8.com/windows/32/trash.png" alt="trash"/>';
 
         // Deletes the project from localStorage
         projectDeleteBtn.addEventListener('click', () => {
@@ -77,8 +77,8 @@ class CardHandler {
         const todoStatusBtn = document.createElement('button');
         todoStatusBtn.className = 'todoStatusBtn ';
 
-        // Sets the checkbox state based on the status during rendering
-        todoStatusBtn.textContent = status == true ? 'Completed' : 'Pending';
+        // Updates button text to reflect the todo's completion state
+        todoStatusBtn.textContent = status == true ? 'STATUS: COMPLETED' : 'STATUS: PENDING';
 
         // Sets the active todo ID and toggles the todo status
         todoStatusBtn.addEventListener('click', () => {
@@ -88,7 +88,7 @@ class CardHandler {
 
         const todoEditBtn = document.createElement('button');
         todoEditBtn.className = 'todoEditBtn'
-        todoEditBtn.textContent = 'Edit';
+        todoEditBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/windows/32/edit--v1.png" alt="edit--v1"/>';
 
         // Sets the active todo ID and displays the todo form
         todoEditBtn.addEventListener('click', () => {
@@ -99,7 +99,7 @@ class CardHandler {
 
         const todoDeleteBtn = document.createElement('button');
         todoDeleteBtn.className = 'todoDeleteBtn'
-        todoDeleteBtn.textContent = 'Delete';
+        todoDeleteBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/windows/32/trash.png" alt="trash"/>';
 
         // Deletes the todo from localStorage
         todoDeleteBtn.addEventListener('click', () => {
@@ -124,7 +124,7 @@ class CardHandler {
 
         const addProjectBtn = document.createElement('button');
         addProjectBtn.id = 'addProjectBtn';
-        addProjectBtn.textContent = 'Add Project';
+        addProjectBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/external-inkubators-basic-outline-inkubators/32/external-add-folder-file-and-folder-inkubators-basic-outline-inkubators.png" alt="external-add-folder-file-and-folder-inkubators-basic-outline-inkubators"/> <div>Add Project<div/>';
 
         addProjectBtn.addEventListener('click', () => {
             controller.projectEditMode = false;
@@ -150,7 +150,7 @@ class CardHandler {
 
         const addTodoBtn = document.createElement('button');
         addTodoBtn.id = 'addTodoBtn';
-        addTodoBtn.textContent = 'Add Todo';
+        addTodoBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/windows/32/add-property.png" alt="add-property"/> <div> Add Todo </div>';
 
         addTodoBtn.addEventListener('click', () => {
             controller.todoEditMode = false;

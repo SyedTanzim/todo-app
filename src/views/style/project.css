@@ -1,6 +1,6 @@
 .project {
     height: 10vh;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,11 +8,17 @@
 }
 
 .projectEditBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 4vh;
     width: 4vh;
 }
 
 .projectDeleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 4vh;
     width: 4vh;
 }

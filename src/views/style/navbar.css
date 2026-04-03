@@ -1,5 +1,6 @@
 #navBar {
-    outline: 1px solid black;
+    border: 3px solid black;
+    border-bottom: 0px;
     height: 10vh;
     width: 90%;
     display: flex;
@@ -11,10 +12,29 @@
 }
 
 #projectHeading {
-    text-align: center;
-    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid black;
+    height: 100%;
+    width: 25%;
 }
 
 #todoHeading {
+    margin-left: 30px;
     flex: 1;
+}
+
+#navBtnContainer {
+    display: flex;
+}
+
+#navBtnContainer>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    height: 5vh;
+    width: 10vw;
+    gap: 10px;
 }
