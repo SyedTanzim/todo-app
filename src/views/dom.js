@@ -6,7 +6,6 @@ import { format } from "date-fns";
 class DomController {
 
     renderApp() {
-        const mainContainer = document.querySelector('#mainContainer');
         const projectContainer = document.querySelector('#projectContainer');
 
         // Clears the projectContainer before rebuilding it
@@ -32,8 +31,6 @@ class DomController {
                 todoContainer.appendChild(todoCard);
             });
         }
-
-        mainContainer.appendChild(projectContainer);
     }
 }
 
