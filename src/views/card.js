@@ -74,15 +74,14 @@ class CardHandler {
         todoPriority.className = 'todoPriority';
         todoPriority.textContent = `PRIORITY: ${priority}`;
 
-        const todoCheckbox = document.createElement('input');
-        todoCheckbox.type = 'checkbox';
-        todoCheckbox.className = 'todoCheckbox';
+        const todoStatusBtn = document.createElement('button');
+        todoStatusBtn.className = 'todoStatusBtn ';
 
         // Sets the checkbox state based on the status during rendering
-        todoCheckbox.checked = status;
+        todoStatusBtn.textContent = status == true ? 'Completed' : 'Pending';
 
         // Sets the active todo ID and toggles the todo status
-        todoCheckbox.addEventListener('click', () => {
+        todoStatusBtn.addEventListener('click', () => {
             controller.activeTodoID = id;
             controller.toggleTodoStatus();
         });
@@ -111,7 +110,7 @@ class CardHandler {
         todo.appendChild(todoDescription);
         todo.appendChild(todoPriority);
         todo.appendChild(todoDate);
-        todo.appendChild(todoCheckbox);
+        todo.appendChild(todoStatusBtn);
         todo.appendChild(todoEditBtn);
         todo.appendChild(todoDeleteBtn);
 
