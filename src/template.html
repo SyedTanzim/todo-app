@@ -23,14 +23,18 @@
 
             <label for="todoPriority">select priority level</label>
             <select name="priority" id="todoPriority">
-                <option value="low">low</option>
-                <option value="med">med</option>
-                <option value="high">high</option>
+                <option value="LOW">LOW</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="HIGH">HIGH</option>
             </select>
         </form>
     </dialog>
 
-    <nav id="navbar"></nav>
+    <nav id="navBar">
+        <h1 id="projectHeading">Project List</h1>
+        <h1 id="todoHeading">Todo List</h1>
+        <div id="navBtnContainer"></div>
+    </nav>
 
     <div id="mainContainer">
         <div id="projectContainer"></div>

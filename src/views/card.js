@@ -59,26 +59,30 @@ class CardHandler {
         todo.dataset.status = status; // Stores the todo status
 
         const todoTitle = document.createElement('h3');
+        todoTitle.className = 'todoTitle';
         todoTitle.textContent = title;
 
         const todoDescription = document.createElement('p');
+        todoDescription.className = 'todoDescription';
         todoDescription.textContent = description;
 
         const todoDate = document.createElement('p');
-        todoDate.textContent = date;
+        todoDate.className = 'todoDate';
+        todoDate.textContent = `DUE: ${date}`;
 
         const todoPriority = document.createElement('p');
-        todoPriority.textContent = priority;
+        todoPriority.className = 'todoPriority';
+        todoPriority.textContent = `PRIORITY: ${priority}`;
 
-        const todoStatusCheckbox = document.createElement('input');
-        todoStatusCheckbox.type = 'checkbox';
-        todoStatusCheckbox.className = 'todoStatusCheckbox';
-        
+        const todoCheckbox = document.createElement('input');
+        todoCheckbox.type = 'checkbox';
+        todoCheckbox.className = 'todoCheckbox';
+
         // Sets the checkbox state based on the status during rendering
-        todoStatusCheckbox.checked = status;
-        
+        todoCheckbox.checked = status;
+
         // Sets the active todo ID and toggles the todo status
-        todoStatusCheckbox.addEventListener('click', () => {
+        todoCheckbox.addEventListener('click', () => {
             controller.activeTodoID = id;
             controller.toggleTodoStatus();
         });
@@ -86,7 +90,7 @@ class CardHandler {
         const todoEditBtn = document.createElement('button');
         todoEditBtn.className = 'todoEditBtn'
         todoEditBtn.textContent = 'Edit';
-        
+
         // Sets the active todo ID and displays the todo form
         todoEditBtn.addEventListener('click', () => {
             controller.activeTodoID = id;
@@ -105,9 +109,9 @@ class CardHandler {
 
         todo.appendChild(todoTitle);
         todo.appendChild(todoDescription);
-        todo.appendChild(todoDate);
         todo.appendChild(todoPriority);
-        todo.appendChild(todoStatusCheckbox);
+        todo.appendChild(todoDate);
+        todo.appendChild(todoCheckbox);
         todo.appendChild(todoEditBtn);
         todo.appendChild(todoDeleteBtn);
 
@@ -115,7 +119,7 @@ class CardHandler {
     }
 
     buttonsGenerator() {
-        const navbar = document.querySelector('#navbar');
+        const navBtnContainer = document.querySelector('#navBtnContainer');
         const projectForm = document.querySelector('#projectForm');
         const todoForm = document.querySelector('#todoForm');
 
@@ -171,8 +175,8 @@ class CardHandler {
             formHandler.submitTodoForm();
         });
 
-        navbar.appendChild(addProjectBtn);
-        navbar.appendChild(addTodoBtn);
+        navBtnContainer.appendChild(addProjectBtn);
+        navBtnContainer.appendChild(addTodoBtn);
         projectForm.appendChild(submitProjectBtn);
         projectForm.appendChild(closeProjectModalBtn);
         todoForm.appendChild(submitTodoBtn);

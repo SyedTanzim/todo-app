@@ -1,0 +1,20 @@
+#navBar {
+    outline: 1px solid black;
+    height: 10vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+#navBtnContainer {
+    margin-left: auto;
+}
+
+#projectHeading {
+    text-align: center;
+    width: 20%;
+}
+
+#todoHeading {
+    flex: 1;
+}
