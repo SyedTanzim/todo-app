@@ -11,6 +11,9 @@ class DomController {
     }
 
     renderProjects() {
+        // If no active project is selected, the active project ID defaults to 'default'
+        controller.activeProjectID = controller.activeProjectID != null ? controller.activeProjectID : 'default';
+        
         const projectContainer = document.querySelector('#projectContainer');
 
         // Clears the projectContainer before rebuilding it
@@ -18,6 +21,7 @@ class DomController {
 
         controller.getData().forEach(project => {
             const projectCard = cardHandler.projectCard(project.title, project.id, project.todos);
+            projectCard.classList = project.id == controller.activeProjectID? 'project activeProject':'project';
             projectContainer.appendChild(projectCard);
         });
     }

@@ -1,15 +1,13 @@
-import { format } from "date-fns";
+import { dom } from "./dom.js";
 import { controller } from "../controller/controller.js";
 import { formHandler } from "./form.js";
 
 // Handles all card-generation functions
 class CardHandler {
 
-    projectCard(title, id, todos) {
+    projectCard(title, id) {
 
         const projectCard = document.createElement('div');
-        projectCard.className = 'project'
-        projectCard.dataset.id = id;
 
         const projectTitle = document.createElement('h1');
         projectTitle.className = 'projectTitle'
@@ -20,10 +18,7 @@ class CardHandler {
             const todoContainer = document.querySelector('#todoContainer');
             todoContainer.textContent = '';
             controller.activeProjectID = id;
-            todos.forEach(todo => {
-                const todoCard = this.todoCard(todo.title, todo.description, format(todo.date, 'dd MMM yyyy'), todo.priority, todo.status, todo.id);
-                todoContainer.appendChild(todoCard);
-            });
+            dom.renderApp();
         });
 
         const projectEditBtn = document.createElement('button');
@@ -56,8 +51,6 @@ class CardHandler {
 
     todoCard(title, description, date, priority, status, id) {
         const todo = document.createElement('div');
-        todo.dataset.id = id; // Stores the todo ID
-        todo.dataset.status = status; // Stores the todo status
 
         todo.classList = status == true ? 'completedTodo todo' : 'todo';
 
