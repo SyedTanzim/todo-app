@@ -58,7 +58,8 @@ class CardHandler {
         todo.dataset.id = id; // Stores the todo ID
         todo.dataset.status = status; // Stores the todo status
 
-        todo.addEventListener('click', () => {
+        todo.addEventListener('click', (e) => {
+            e.preventDefault();
             controller.activeTodoID = id;
             formHandler.showTodoDetailForm(id);
         });
@@ -86,7 +87,8 @@ class CardHandler {
         todoStatusBtn.textContent = status == true ? 'STATUS: COMPLETED' : 'STATUS: PENDING';
 
         // Sets the active todo ID and toggles the todo status
-        todoStatusBtn.addEventListener('click', () => {
+        todoStatusBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // stops the event from bubbling up to parent elements.
             controller.activeTodoID = id;
             controller.toggleTodoStatus();
         });
@@ -96,7 +98,8 @@ class CardHandler {
         todoEditBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/windows/32/edit--v1.png" alt="edit--v1"/>';
 
         // Sets the active todo ID and displays the todo form
-        todoEditBtn.addEventListener('click', () => {
+        todoEditBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // stops the event from bubbling up to parent elements.
             controller.activeTodoID = id;
             controller.todoEditMode = true;
             formHandler.showTodoForm(id);
@@ -107,7 +110,8 @@ class CardHandler {
         todoDeleteBtn.innerHTML = '<img width="25" height="25" src="https://img.icons8.com/windows/32/trash.png" alt="trash"/>';
 
         // Deletes the todo from localStorage
-        todoDeleteBtn.addEventListener('click', () => {
+        todoDeleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // stops the event from bubbling up to parent elements.
             controller.removeTodoFromProject(id);
         });
 
@@ -140,7 +144,8 @@ class CardHandler {
         closeProjectModalBtn.id = 'closeProjectModalBtn';
         closeProjectModalBtn.textContent = 'Cancel';
 
-        closeProjectModalBtn.addEventListener('click', () => {
+        closeProjectModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             formHandler.hideProjectForm();
         });
 
@@ -166,7 +171,8 @@ class CardHandler {
         closeTodoModalBtn.id = 'closeTodoModalBtn';
         closeTodoModalBtn.textContent = 'Cancel';
 
-        closeTodoModalBtn.addEventListener('click', () => {
+        closeTodoModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             formHandler.hideTodoForm();
         });
 
@@ -183,7 +189,8 @@ class CardHandler {
         closeTodoDetailBtn.id = 'closeTodoDetailBtn';
         closeTodoDetailBtn.textContent = 'Close';
 
-        closeTodoDetailBtn.addEventListener('click', () => {
+        closeTodoDetailBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             formHandler.hideTodoDetailForm();
         });
 
