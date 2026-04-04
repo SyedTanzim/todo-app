@@ -6,7 +6,16 @@
     box-shadow: 2px 2px 0 black;
 }
 
-.todo:hover{
+.completedTodo {
+    background: repeating-linear-gradient(135deg,
+            transparent,
+            transparent 8px,
+            rgba(0, 0, 0, 0.1) 8px,
+            rgba(0, 0, 0, 0.1) 10px
+    );
+}
+
+.todo:hover {
     cursor: pointer;
 }
 

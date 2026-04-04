@@ -54,9 +54,10 @@ class CardHandler {
 
     todoCard(title, description, date, priority, status, id) {
         const todo = document.createElement('div');
-        todo.className = 'todo';
         todo.dataset.id = id; // Stores the todo ID
         todo.dataset.status = status; // Stores the todo status
+
+        todo.classList = status == true ? 'completedTodo todo' : 'todo';
 
         todo.addEventListener('click', (e) => {
             e.preventDefault();
@@ -81,8 +82,8 @@ class CardHandler {
         todoPriority.textContent = `PRIORITY: ${priority}`;
 
         const todoStatusBtn = document.createElement('button');
-        todoStatusBtn.className = 'todoStatusBtn ';
-
+        todoStatusBtn.className = 'todoStatusBtn';
+        
         // Updates button text to reflect the todo's completion state
         todoStatusBtn.textContent = status == true ? 'STATUS: COMPLETED' : 'STATUS: PENDING';
 
