@@ -5,7 +5,12 @@ import { format } from "date-fns";
 // Handles the rendering of the application
 class DomController {
 
-    renderApp() {
+    renderApp(){
+        this.renderProjects();
+        this.renderTodos();
+    }
+
+    renderProjects() {
         const projectContainer = document.querySelector('#projectContainer');
 
         // Clears the projectContainer before rebuilding it
@@ -15,10 +20,9 @@ class DomController {
             const projectCard = cardHandler.projectCard(project.title, project.id, project.todos);
             projectContainer.appendChild(projectCard);
         });
+    }
 
-        // If no active project is selected, the active project ID defaults to 'default'
-        controller.activeProjectID = controller.activeProjectID != null ? controller.activeProjectID : 'default';
-
+    renderTodos() {
         const project = controller.getData().find(project => project.id == controller.activeProjectID);
         const todoContainer = document.querySelector('#todoContainer');
 
