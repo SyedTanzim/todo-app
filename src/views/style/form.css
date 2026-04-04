@@ -78,3 +78,30 @@ label {
     width: 7vw;
     margin-top: 20px;
 }
+
+#todoDetailForm {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 25vw;
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+#todoDetailTitle {
+    height: 3vw;
+    width: 23vw;
+    margin-bottom: 30px;
+}
+
+#todoDetailDescription {
+    height: 7vw;
+    width: 23vw;
+    margin-bottom: 30px;
+}
+
+#todoDetailFormBtnContainer>button {
+    height: 5vh;
+    width: 23vw;
+    margin-top: 20px;
+}

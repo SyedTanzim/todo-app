@@ -58,6 +58,11 @@ class CardHandler {
         todo.dataset.id = id; // Stores the todo ID
         todo.dataset.status = status; // Stores the todo status
 
+        todo.addEventListener('click', () => {
+            controller.activeTodoID = id;
+            formHandler.showTodoDetailForm(id);
+        });
+
         const todoTitle = document.createElement('h3');
         todoTitle.className = 'todoTitle';
         todoTitle.textContent = title;
@@ -120,6 +125,7 @@ class CardHandler {
         const navBtnContainer = document.querySelector('#navBtnContainer');
         const projectFormBtnContainer = document.querySelector('#projectFormBtnContainer');
         const todoFormBtnContainer = document.querySelector('#todoFormBtnContainer');
+        const todoDetailFormBtnContainer = document.querySelector('#todoDetailFormBtnContainer');
 
         const addProjectBtn = document.createElement('button');
         addProjectBtn.id = 'addProjectBtn';
@@ -173,12 +179,21 @@ class CardHandler {
             formHandler.submitTodoForm();
         });
 
+        const closeTodoDetailBtn = document.createElement('button');
+        closeTodoDetailBtn.id = 'closeTodoDetailBtn';
+        closeTodoDetailBtn.textContent = 'Close';
+
+        closeTodoDetailBtn.addEventListener('click', () => {
+            formHandler.hideTodoDetailForm();
+        });
+
         navBtnContainer.appendChild(addProjectBtn);
         navBtnContainer.appendChild(addTodoBtn);
         projectFormBtnContainer.appendChild(submitProjectBtn);
         projectFormBtnContainer.appendChild(closeProjectModalBtn);
         todoFormBtnContainer.appendChild(submitTodoBtn);
         todoFormBtnContainer.appendChild(closeTodoModalBtn);
+        todoDetailFormBtnContainer.appendChild(closeTodoDetailBtn);
     }
 }
 

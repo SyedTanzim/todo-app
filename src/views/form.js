@@ -109,6 +109,30 @@ class FormHandler {
         }
 
     }
+
+    showTodoDetailForm(todoId) {
+        const projectModal = document.querySelector('#projectModal');
+        const todoDetailModal = document.querySelector('#todoDetailModal');
+
+        if (todoId) {
+            const project = controller.getData().find(project => project.id === controller.activeProjectID);
+            const todo = project.todos.find(todo => todo.id === todoId);
+
+            const todoDetailTitle = document.querySelector('#todoDetailTitle');
+            todoDetailTitle.value = todo.title;
+
+            const todoDetailDescription = document.querySelector('#todoDetailDescription');
+            todoDetailDescription.value = todo.description;
+        }
+
+        projectModal.close(); //Close the project form
+        todoDetailModal.show();
+    }
+
+    hideTodoDetailForm() {
+        const todoDetailModal = document.querySelector('#todoDetailModal');
+        todoDetailModal.close();
+    }
 }
 
 export const formHandler = new FormHandler;

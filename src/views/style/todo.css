@@ -6,6 +6,10 @@
     box-shadow: 2px 2px 0 black;
 }
 
+.todo:hover{
+    cursor: pointer;
+}
+
 .todo>* {
     margin-top: 15px;
     margin-left: 15px;
