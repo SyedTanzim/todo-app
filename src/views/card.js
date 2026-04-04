@@ -107,7 +107,6 @@ class CardHandler {
         });
 
         todo.appendChild(todoTitle);
-        todo.appendChild(todoDescription);
         todo.appendChild(todoPriority);
         todo.appendChild(todoDate);
         todo.appendChild(todoStatusBtn);

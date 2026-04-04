@@ -4,6 +4,9 @@
 @import url(./form.css);
 
 * {
+    font-family: "Space Grotesk", sans-serif;
+    font-style: normal;
+    font-weight: 700;
     padding: 0;
     margin: 0;
 }
@@ -18,15 +21,16 @@ body {
 }
 
 #mainContainer {
-    border: 3px solid black;
+    border: 2px solid black;
     display: flex;
-    height: 80vh;
-    width: 90%;
+    height: 85vh;
+    width: 97%;
 }
 
 #projectContainer {
-    border-right: 3px solid black;
-    width: 25%;
+    border-right: 2px solid black;
+    width: 23%;
+    overflow-y: auto;
 }
 
 #todoContainer {
@@ -34,4 +38,5 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow-y: auto;
 }

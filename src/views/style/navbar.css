@@ -1,8 +1,8 @@
 #navBar {
-    border: 3px solid black;
+    border: 2px solid black;
     border-bottom: 0px;
     height: 10vh;
-    width: 90%;
+    width: 97%;
     display: flex;
     align-items: center;
 }
@@ -12,17 +12,19 @@
 }
 
 #projectHeading {
+    border-right: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 3px solid black;
     height: 100%;
-    width: 25%;
+    width: 23%;
+    font-size: 24px;
 }
 
 #todoHeading {
     margin-left: 30px;
     flex: 1;
+    font-size: 24px;
 }
 
 #navBtnContainer {
@@ -37,4 +39,9 @@
     height: 5vh;
     width: 10vw;
     gap: 10px;
+}
+
+#navBtnContainer>button>div {
+    font-size: 16px;
+    font-weight: 500;
 }

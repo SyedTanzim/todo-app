@@ -1,10 +1,14 @@
 .project {
     height: 10vh;
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 7px;
+}
+
+.projectTitle {
+    font-size: 19px;
 }
 
 .projectEditBtn {
