@@ -14,22 +14,31 @@
 
     <dialog class="modal" id="projectModal">
         <form action="" id="projectForm">
-            <input type="text" placeholder="enter title" id="projectTitle" required>
+            <label for="projectTitle">Project Title*</label>
+            <input type="text" placeholder="" id="projectTitle" required>
+            <div id="projectFormBtnContainer"></div>
         </form>
     </dialog>
 
     <dialog class="modal" id="todoModal">
         <form action="" id="todoForm">
-            <input id="todoTitle" type="text" placeholder="enter title" required>
-            <input id="todoDescription" type="text" placeholder="enter description" required>
-            <input id="todoDate" type="date" placeholder="enter date" required>
+            <label for="todoTitle">Todo Title*</label>
+            <input id="todoTitle" type="text" placeholder="" required>
 
-            <label for="todoPriority">select priority level</label>
+            <label for="todoDescription">Todo Description</label>
+            <input id="todoDescription" type="text" placeholder="" required>
+
+            <label for="todoPriority">Todo Priority</label>
             <select name="priority" id="todoPriority">
                 <option value="LOW">LOW</option>
                 <option value="MEDIUM">MEDIUM</option>
                 <option value="HIGH">HIGH</option>
             </select>
+
+            <label for="todoDate">Todo Date</label>
+            <input id="todoDate" type="date" placeholder="" required>
+
+            <div id="todoFormBtnContainer"></div>
         </form>
     </dialog>
 

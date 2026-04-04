@@ -118,8 +118,8 @@ class CardHandler {
 
     buttonsGenerator() {
         const navBtnContainer = document.querySelector('#navBtnContainer');
-        const projectForm = document.querySelector('#projectForm');
-        const todoForm = document.querySelector('#todoForm');
+        const projectFormBtnContainer = document.querySelector('#projectFormBtnContainer');
+        const todoFormBtnContainer = document.querySelector('#todoFormBtnContainer');
 
         const addProjectBtn = document.createElement('button');
         addProjectBtn.id = 'addProjectBtn';
@@ -132,7 +132,7 @@ class CardHandler {
 
         const closeProjectModalBtn = document.createElement('button');
         closeProjectModalBtn.id = 'closeProjectModalBtn';
-        closeProjectModalBtn.textContent = 'Close';
+        closeProjectModalBtn.textContent = 'Cancel';
 
         closeProjectModalBtn.addEventListener('click', () => {
             formHandler.hideProjectForm();
@@ -140,7 +140,7 @@ class CardHandler {
 
         const submitProjectBtn = document.createElement('button');
         submitProjectBtn.id = 'submitProjectBtn';
-        submitProjectBtn.textContent = 'Submit';
+        submitProjectBtn.textContent = 'Add Project';
 
         submitProjectBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevents the browser from reloading or sending a traditional HTTP request
@@ -158,7 +158,7 @@ class CardHandler {
 
         const closeTodoModalBtn = document.createElement('button');
         closeTodoModalBtn.id = 'closeTodoModalBtn';
-        closeTodoModalBtn.textContent = 'Close';
+        closeTodoModalBtn.textContent = 'Cancel';
 
         closeTodoModalBtn.addEventListener('click', () => {
             formHandler.hideTodoForm();
@@ -166,7 +166,7 @@ class CardHandler {
 
         const submitTodoBtn = document.createElement('button');
         submitTodoBtn.id = 'submitTodoBtn';
-        submitTodoBtn.textContent = 'Submit';
+        submitTodoBtn.textContent = 'Add Todo';
 
         submitTodoBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevents the browser from reloading or sending a traditional HTTP request
@@ -175,10 +175,10 @@ class CardHandler {
 
         navBtnContainer.appendChild(addProjectBtn);
         navBtnContainer.appendChild(addTodoBtn);
-        projectForm.appendChild(submitProjectBtn);
-        projectForm.appendChild(closeProjectModalBtn);
-        todoForm.appendChild(submitTodoBtn);
-        todoForm.appendChild(closeTodoModalBtn);
+        projectFormBtnContainer.appendChild(submitProjectBtn);
+        projectFormBtnContainer.appendChild(closeProjectModalBtn);
+        todoFormBtnContainer.appendChild(submitTodoBtn);
+        todoFormBtnContainer.appendChild(closeTodoModalBtn);
     }
 }
 

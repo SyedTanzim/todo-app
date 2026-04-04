@@ -1,0 +1,78 @@
+dialog {
+    margin: auto;
+    border: 2px solid black;
+}
+
+label{
+    padding-bottom: 5px;
+}
+
+#projectForm {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 30vw;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#projectTitle {
+    height: 3vw;
+    width: 28vw;
+}
+
+#projectFormBtnContainer {
+    display: flex;
+    gap: 10px;
+}
+
+#projectForm>#projectFormBtnContainer>button {
+    height: 5vh;
+    width: 7vw;
+    margin-top: 20px;
+}
+
+#todoForm {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    width: 30vw;
+    margin-top: 30px;
+    margin-left: 25px;
+}
+
+#todoTitle {
+    height: 3vw;
+    width: 28vw;
+    margin-bottom: 30px;
+}
+
+#todoDescription {
+    height: 7vw;
+    width: 28vw;
+    margin-bottom: 30px;
+}
+
+#todoPriority {
+    height: 3vw;
+    width: 28vw;
+    margin-bottom: 30px;
+}
+
+#todoDate {
+    height: 3vw;
+    width: 28vw;
+    margin-bottom: 30px;
+}
+
+
+#todoFormBtnContainer {
+    display: flex;
+    gap: 10px;
+}
+
+#todoForm>#todoFormBtnContainer>button {
+    height: 5vh;
+    width: 7vw;
+    margin-top: 20px;
+}
