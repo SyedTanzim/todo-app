@@ -16,7 +16,7 @@ class CardHandler {
         projectTitle.textContent = title;
 
         // Renders the todos of the active project when it is clicked
-        projectTitle.addEventListener('click', () => {
+        projectCard.addEventListener('click', () => {
             const todoContainer = document.querySelector('#todoContainer');
             todoContainer.textContent = '';
             controller.activeProjectID = id;
@@ -30,7 +30,8 @@ class CardHandler {
         projectEditBtn.className = 'projectEditBtn'
         projectEditBtn.innerHTML = '<img width="20" height="20" src="https://img.icons8.com/windows/32/edit--v1.png" alt="edit--v1"/>';
 
-        projectEditBtn.addEventListener('click', () => {
+        projectEditBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             controller.activeProjectID = id;
             controller.projectEditMode = true;
             formHandler.showProjectForm(id);
@@ -41,7 +42,8 @@ class CardHandler {
         projectDeleteBtn.innerHTML = '<img width="20" height="20" src="https://img.icons8.com/windows/32/trash.png" alt="trash"/>';
 
         // Deletes the project from localStorage
-        projectDeleteBtn.addEventListener('click', () => {
+        projectDeleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             controller.removeProject(id);
         });
 
@@ -83,7 +85,7 @@ class CardHandler {
 
         const todoStatusBtn = document.createElement('button');
         todoStatusBtn.className = 'todoStatusBtn';
-        
+
         // Updates button text to reflect the todo's completion state
         todoStatusBtn.textContent = status == true ? 'STATUS: COMPLETED' : 'STATUS: PENDING';
 

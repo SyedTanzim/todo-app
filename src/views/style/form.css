@@ -52,7 +52,6 @@ label {
 
 #todoDescription {
     resize: none;
-    padding: 5px;
     height: 7vw;
     width: 23vw;
     margin-bottom: 30px;
@@ -98,7 +97,6 @@ label {
 
 #todoDetailDescription {
     resize: none;
-    padding: 5px;
     height: 7vw;
     width: 23vw;
     margin-bottom: 30px;
