@@ -3,6 +3,7 @@
     height: 35vh;
     width: 21.4%;
     margin: 20px 0px 20px 30px;
+    box-shadow: 2px 2px 0 black;
 }
 
 .todo>* {
@@ -26,13 +27,13 @@
 
 .todoEditBtn {
     height: 4vh;
-    width: 30%;
+    width: 25%;
     margin-right: 0px;
 }
 
 .todoDeleteBtn {
     height: 4vh;
-    width: 30%;
+    width: 25%;
 }
 
 .todoStatusBtn {

@@ -5,6 +5,7 @@
     width: 97%;
     display: flex;
     align-items: center;
+    box-shadow: 4px 4px black;
 }
 
 #navBtnContainer {

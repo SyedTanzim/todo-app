@@ -1,9 +1,10 @@
 dialog {
     margin: auto;
     border: 2px solid black;
+    box-shadow: 2px 2px 0 black;
 }
 
-label{
+label {
     padding-bottom: 5px;
 }
 
@@ -30,38 +31,39 @@ label{
     height: 5vh;
     width: 7vw;
     margin-top: 20px;
+    box-shadow: 4px 4px 0 black;
 }
 
 #todoForm {
     display: flex;
     flex-direction: column;
     height: 75vh;
-    width: 30vw;
+    width: 25vw;
     margin-top: 30px;
     margin-left: 25px;
 }
 
 #todoTitle {
     height: 3vw;
-    width: 28vw;
+    width: 23vw;
     margin-bottom: 30px;
 }
 
 #todoDescription {
     height: 7vw;
-    width: 28vw;
+    width: 23vw;
     margin-bottom: 30px;
 }
 
 #todoPriority {
     height: 3vw;
-    width: 28vw;
+    width: 23.2vw;
     margin-bottom: 30px;
 }
 
 #todoDate {
     height: 3vw;
-    width: 28vw;
+    width: 23vw;
     margin-bottom: 30px;
 }
 

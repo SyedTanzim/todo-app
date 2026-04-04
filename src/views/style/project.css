@@ -1,14 +1,21 @@
 .project {
     height: 10vh;
-    border-bottom: 2px solid black;
+    width: 93%;
+    margin-top: 10px;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 7px;
+    box-shadow: 2px 2px 0 black;
 }
 
 .projectTitle {
     font-size: 19px;
+}
+
+.projectTitle:hover {
+    cursor: pointer;
 }
 
 .projectEditBtn {
@@ -17,6 +24,7 @@
     justify-content: center;
     height: 4vh;
     width: 4vh;
+    box-shadow: 2px 2px 0 black;
 }
 
 .projectDeleteBtn {
@@ -25,4 +33,5 @@
     justify-content: center;
     height: 4vh;
     width: 4vh;
+    box-shadow: 2px 2px 0 black;
 }
