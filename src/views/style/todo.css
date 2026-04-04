@@ -6,6 +6,11 @@
     box-shadow: 2px 2px 0 black;
 }
 
+#todoNotFound{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .completedTodo {
     background: repeating-linear-gradient(135deg,
             transparent,

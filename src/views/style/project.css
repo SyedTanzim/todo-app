@@ -11,6 +11,11 @@
     cursor: pointer;
 }
 
+#projectNotFound{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .activeProject {
     background: repeating-linear-gradient(135deg,
             transparent,
