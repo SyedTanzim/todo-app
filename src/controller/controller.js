@@ -19,7 +19,7 @@ export class ControllerClass {
 
         // Stores the ID of the currently selected todo
         this.activeTodoID = null;
-        this.todoEditMode = false; 
+        this.todoEditMode = false;
     }
 
     // Return all projects
@@ -27,13 +27,32 @@ export class ControllerClass {
         return this.dataArray;
     }
 
-    // Creates a new project and saves it
-    generateProject(title) {
-        const project = new ProjectGenerator(title);
-        this.dataArray.push(project);
-        dataManager.saveData(this.dataArray);
-        this.activeProjectID = project.id;
-        dom.renderApp();
+// Creates a new project. If a projectId is provided, treats it as the default 
+// project and skips creation if it already exists — prevents duplicates on every app load
+    generateProject(title, projectId) {
+    
+        if (projectId) {
+            const project = new ProjectGenerator(title, projectId);
+            const matchedProject = this.dataArray.find(p => p.id == project.id); // checks the if the dataArray contains the project with same id as main project
+
+            // Default project already exists, skip to avoid duplicates
+            if (matchedProject) {
+                return; 
+            
+            } else {
+                this.dataArray.push(project);
+                dataManager.saveData(this.dataArray);
+                this.activeProjectID = project.id;
+                dom.renderApp();
+            }
+
+        } else {
+            const project = new ProjectGenerator(title);
+            this.dataArray.push(project);
+            dataManager.saveData(this.dataArray);
+            this.activeProjectID = project.id;
+            dom.renderApp();
+        }
     }
 
     // Deletes a project
@@ -86,7 +105,7 @@ export class ControllerClass {
         dataManager.saveData(this.dataArray);
         dom.renderApp();
     }
-    
+
     // Toggles the completion status of a todo
     toggleTodoStatus() {
         const project = this.dataArray.find(project => project.id === this.activeProjectID);
