@@ -1,4 +1,5 @@
 import { controller } from "../controller/controller.js";
+import { format } from "date-fns";
 
 // Handles all form-related functions
 class FormHandler {
@@ -65,8 +66,7 @@ class FormHandler {
             todoDescription.value = todo.description;
 
             const todoDate = document.querySelector('#todoDate');
-            todoDate.value = todo.date;
-
+            todoDate.value = format(todo.date, 'yyyy-MM-dd');
             const todoPriority = document.querySelector('#todoPriority');
             todoPriority.value = todo.priority;
         } else {
@@ -91,7 +91,7 @@ class FormHandler {
 
         const title = document.querySelector('#todoTitle').value;
         const description = document.querySelector('#todoDescription').value;
-        const date = document.querySelector('#todoDate').value;
+        const date = document.querySelector('#todoDate').value || format(new Date(), 'yyyy-MM-dd');;
         const priority = document.querySelector('#todoPriority').value;
 
         // If no active project is selected, the project ID defaults to 'default'
